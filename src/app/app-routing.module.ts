@@ -47,6 +47,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/comunicados/comunicados.module').then(m => m.ComunicadosPageModule)
   },
   {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilPageModule)
+  },
+  {
+    path: 'cashback',
+    loadChildren: () => import('./pages/cashback/cashback.module').then(m => m.CashbackPageModule)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

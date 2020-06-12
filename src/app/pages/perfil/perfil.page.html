@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Meu Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <img *ngIf="usuario.foto" [src]="base64Image" width="200px" />
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col col-6>
+        <ion-button ion-item color="primary" fill="outline" shape="round" expand="full" size="medium"
+          (click)="abrirGaleria()">
+          Galeria
+        </ion-button>
+      </ion-col>
+      <ion-col col-6 text-right>
+        <ion-button ion-item color="primary" fill="outline" shape="round" expand="full" size="medium"
+          (click)="abrirCamera()">
+          Câmera
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-list lines="none">
+    <form [formGroup]="form">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="nome" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        E-mail: {{usuario?.email}}
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="telefone1">Celular / Whatsapp </ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.whatsapp" name="telefone1" [brmasker]="{phone: true}"
+          [brmasker]="{mask:'(00) 0000-0000', len:14}"></ion-input>
+      </ion-item>
+
+
+      <!-- Endereço -->
+      <ion-item>
+        <ion-label for="cep">CEP</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.cep" name="cep" [brmasker]="{mask:'00.000-000', len:10}">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="logradouro">Logradouro</ion-label>
+        <ion-textarea [(ngModel)]="usuario.logradouro" name="logradouro" required label-md-text-color="primary"
+          rows="2">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="numero">Nº</ion-label>
+        <ion-input type="number" [(ngModel)]="usuario.numero" name="numero"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="complemento">Complemento</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.complemento" name="complemento"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="bairro">Bairro</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.bairro" name="bairro"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="cidade">Cidade</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.cidade" name="cidade"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="estado">Estado</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.estado" name="estado"></ion-input>
+      </ion-item>
+    </form>
+  </ion-list>
+
+
+
+  <ion-row>
+    <ion-col col-6>
+      <ion-button ion-item color="medium" fill="outline" shape="round" expand="full" size="medium" (click)="cancelar()">
+        Cancelar
+      </ion-button>
+    </ion-col>
+    <ion-col col-6 text-right>
+      <ion-button ion-item color="success" fill="outline" shape="round" expand="full" size="medium"
+        (click)="atualizarUsuario()">
+        Salvar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth/';
 import { auth } from 'firebase';
-import { User } from 'src/app/models/user.model';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
     this.fbAuth.signInWithEmailAndPassword(this.form.controls.email.value, this.form.controls.password.value)
       .then((data) => {
         loading.dismiss();
-        localStorage.setItem('portalccr.user', JSON.stringify(new User('', data.user.email, '')));
+        localStorage.setItem('portalccr.user', JSON.stringify(new Usuario('', data.user.email, '')));
         this.navCtrl.navigateRoot('home');
       })
       .catch((err) => {
@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
     this.fbAuth.signInWithPopup(new auth.GoogleAuthProvider())
       .then((data) => {
         console.log(data);
-        localStorage.setItem('portalccr.user', JSON.stringify(new User(data.user.displayName, data.user.email, data.user.photoURL)));
+        localStorage.setItem('portalccr.user', JSON.stringify(new Usuario(data.user.displayName, data.user.email, data.user.photoURL)));
         this.navCtrl.navigateRoot('home');
       })
       .catch((err) => {
