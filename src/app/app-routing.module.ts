@@ -15,6 +15,38 @@ const routes: Routes = [
     loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
   },
   {
+    path: 'emergencia',
+    loadChildren: () => import('./pages/emergencia/emergencia.module').then(m => m.EmergenciaPageModule)
+  },
+  {
+    path: 'postos-combustivel',
+    loadChildren: () => import('./pages/postos-combustivel/postos-combustivel.module').then(m => m.PostosCombustivelPageModule)
+  },
+  {
+    path: 'saude-bem-estar',
+    loadChildren: () => import('./pages/saude-bem-estar/saude-bem-estar.module').then(m => m.SaudeBemEstarPageModule)
+  },
+  {
+    path: 'paradas',
+    loadChildren: () => import('./pages/paradas/paradas.module').then(m => m.ParadasPageModule)
+  },
+  {
+    path: 'rotas',
+    loadChildren: () => import('./pages/rotas/rotas.module').then(m => m.RotasPageModule)
+  },
+  {
+    path: 'postos-ccr',
+    loadChildren: () => import('./pages/postos-ccr/postos-ccr.module').then(m => m.PostosCcrPageModule)
+  },
+  {
+    path: 'noticias',
+    loadChildren: () => import('./pages/noticias/noticias.module').then(m => m.NoticiasPageModule)
+  },
+  {
+    path: 'comunicados',
+    loadChildren: () => import('./pages/comunicados/comunicados.module').then(m => m.ComunicadosPageModule)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

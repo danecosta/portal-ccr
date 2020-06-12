@@ -47,7 +47,6 @@ export class LoginPage implements OnInit {
   }
 
   async signInWithGoogle() {
-    debugger
     this.fbAuth.signInWithPopup(new auth.GoogleAuthProvider())
       .then((data) => {
         console.log(data);
