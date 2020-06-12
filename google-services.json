@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "454649312540",
+    "firebase_url": "https://portal-ccr.firebaseio.com",
+    "project_id": "portal-ccr",
+    "storage_bucket": "portal-ccr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454649312540:android:6b6e549a09f8dcf74976d9",
+        "android_client_info": {
+          "package_name": "portal.ccr.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454649312540-re6ssf2qt45a42rvc3pp75b46998tg86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAZBj7f7yeSU9tRVC-qOufSMt_PB6X3bI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454649312540-re6ssf2qt45a42rvc3pp75b46998tg86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
