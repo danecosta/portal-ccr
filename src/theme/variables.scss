@@ -4,20 +4,20 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #d19500;
+  --ion-color-primary: #a84442;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #d19500;
-  --ion-color-primary-tint: #f4b925;
+  --ion-color-primary-shade: #a84442;
+  --ion-color-primary-tint: #b45856;
 
   /** secondary **/
-  --ion-color-secondary: #3c331c;
+  --ion-color-secondary: #d19500;
   --ion-color-secondary-rgb: 61, 194, 255;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #3c331c;
-  --ion-color-secondary-tint: #8b7745;
+  --ion-color-secondary-shade: #d19500;
+  --ion-color-secondary-tint: #796229;
 
   /** tertiary **/
   --ion-color-tertiary: #5260ff;
@@ -44,11 +44,11 @@
   --ion-color-warning-tint: #ffca22;
 
   /** danger **/
-  --ion-color-danger: #eb445a;
+  --ion-color-danger: #89220c;
   --ion-color-danger-rgb: 235, 68, 90;
   --ion-color-danger-contrast: #ffffff;
   --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #cf3c4f;
+  --ion-color-danger-shade: #89220c;
   --ion-color-danger-tint: #ed576b;
 
   /** dark **/
@@ -60,11 +60,11 @@
   --ion-color-dark-tint: #383a3e;
 
   /** medium **/
-  --ion-color-medium: #92949c;
+  --ion-color-medium: #484848;
   --ion-color-medium-rgb: 146, 148, 156;
   --ion-color-medium-contrast: #ffffff;
   --ion-color-medium-contrast-rgb: 255, 255, 255;
-  --ion-color-medium-shade: #808289;
+  --ion-color-medium-shade: #484848;
   --ion-color-medium-tint: #9d9fa6;
 
   /** light **/
@@ -74,6 +74,12 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+}
+
+:root,
+:root[mode="ios"],
+:root[mode="md"] {
+  --ion-font-family: "Nunito", sans-serif !important;
 }
 
 // @media (prefers-color-scheme: dark) {

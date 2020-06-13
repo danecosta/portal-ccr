@@ -59,13 +59,22 @@ export class LoginPage implements OnInit {
       });
   }
 
+  async signInWithFacebook() {
+    this.fbAuth.signInWithPopup(new auth.FacebookAuthProvider())
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem('portalccr.user', JSON.stringify(new Usuario(data.user.displayName, data.user.email, data.user.photoURL)));
+        this.navCtrl.navigateRoot('home');
+      })
+      .catch((err) => {
+        console.log(err);
+        this.showMessage('Usuário ou senha inválidos');
+      });
+  }
+
   async showMessage(message: string) {
     const toast = await this.toastCtrl.create({ message, duration: 3000, position: 'top' });
     toast.present;
-  }
-
-  async goToSignup() {
-    this.navCtrl.navigateForward('signup');
   }
 
 }

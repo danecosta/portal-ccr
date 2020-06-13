@@ -1,6 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Cashback</ion-title>
+<ion-header class="ion-no-border" translucent="true">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="secondary">
+      <ion-button (click)="irPara('perfil')" size="large">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="irPara('home')">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="secondary">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title size="large">Pontos</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,30 +21,38 @@
   <ion-card>
     <ion-card-content style="text-align: center;">
       <div class="row">
-        <ion-icon slot="icon-only" name="cash-outline" style="font-size: 7em; color: mediumseagreen;">
+        <ion-icon slot="icon-only" name="cash-outline" [ngClass]="pontuacaoAtual > 0 ? 'pont-positiva':'pont-negativa'">
         </ion-icon>
       </div>
       <div class="row">
-        <ion-label style="font-size: large;">Meus pontos: <b style="color: green;">110</b></ion-label>
+        <ion-label style="font-size: x-large;">Meus pontos: <b style="color: green;">{{pontuacaoAtual}}</b></ion-label>
+      </div>
+
+      <ion-list>
+        <ion-item>
+          <ion-label><b style="color: red;">-40</b>: Banho</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label><b style="color: green;">+100</b>: Corte de cabelo feito no posto CCR!</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label><b style="color: green;">+50</b>: Cadastro efetuado com sucesso!</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div style="text-align: center;">
+        <ion-button expand="round" fill="outline" color="medium" (click)="visualizarHistorico()">
+          <ion-icon name="search-outline" slot="start"></ion-icon>&nbsp;&nbsp;Consultar Histórico
+        </ion-button>
       </div>
     </ion-card-content>
   </ion-card>
 
   <div style="text-align: center;">
-    <ion-button expand="round" fill="outline" color="primary">
+    <ion-button expand="round" fill="outline" color="light" (click)="lerQRCode()">
       <ion-icon name="qr-code-outline" slot="start"></ion-icon>&nbsp;&nbsp;LER QR CODE
     </ion-button>
   </div>
 
-  <ion-list>
-    <ion-item>
-      <ion-label><b style="color: red;">-40</b>: Banho</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label><b style="color: green;">+100</b>: Corte de cabelo feito no posto CCR!</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label><b style="color: green;">+50</b>: Cadastro efetuado com sucesso!</ion-label>
-    </ion-item>
-  </ion-list>
+
 </ion-content>

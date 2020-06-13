@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header class="ion-no-border" translucent="true">
+  <ion-toolbar color="danger">
     <ion-buttons slot="secondary">
       <ion-button (click)="irPara('perfil')">
         <ion-icon slot="icon-only" name="person-circle"></ion-icon>
@@ -8,12 +8,12 @@
         <ion-icon slot="icon-only" name="cash-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="end">
       <ion-button color="secondary">
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Portal CCR</ion-title>
+    <ion-title size="large">Utilidades</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,11 +21,10 @@
   <div id="container">
 
     <div class="col-sm-12 col-md-4">
-      <ion-card *ngFor="let card of cards">
+      <ion-card *ngFor="let card of cards" (click)="irPara(card.destino)">
         <ion-item>
-          <ion-icon [name]="card.icone" slot="start"></ion-icon>
-          <ion-label>{{card.titulo}}</ion-label>
-          <ion-button fill="outline" slot="end" (click)="irPara(card.destino)">Veja mais</ion-button>
+          <ion-icon [name]="card.icone" slot="start" color="secondary"></ion-icon>
+          <ion-label><b>{{card.titulo}}</b></ion-label>
         </ion-item>
 
         <ion-card-content>

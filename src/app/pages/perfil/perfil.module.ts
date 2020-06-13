@@ -15,8 +15,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth/';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    PerfilPageRoutingModule,
     AngularFireAuthModule,
+    PerfilPageRoutingModule,
     BrMaskerModule
   ],
   declarations: [PerfilPage]

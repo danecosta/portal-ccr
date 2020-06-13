@@ -1,0 +1,24 @@
+ion-content {
+    --background: #a94442;
+    --ion-text-color: #fff;
+
+    ion-label {
+        white-space: pre-line;
+        word-break: break-word;
+        color: black;
+    }
+
+    ion-button {
+        font-size: medium;
+    }
+
+    pont-positiva {
+        color: #3cb371;
+        font-size: 7em;
+    }
+
+    pont-negativa {
+        color: red;
+        font-size: 7em;
+    }
+}

@@ -7,14 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { CashbackPageRoutingModule } from './cashback-routing.module';
 
 import { CashbackPage } from './cashback.page';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CashbackPageRoutingModule
+    CashbackPageRoutingModule,
   ],
-  declarations: [CashbackPage]
+  declarations: [CashbackPage],
+  providers: [
+    InAppBrowser,
+    BarcodeScanner
+  ]
 })
-export class CashbackPageModule {}
+export class CashbackPageModule { }

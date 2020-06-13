@@ -1,0 +1,35 @@
+ion-content {
+    --background: #a94442;
+    --ion-text-color: #fff;
+
+    ion-label {
+        white-space: pre-line;
+        word-break: break-word;
+        font-size: large;
+        margin: 0 auto;
+    }
+
+    ion-button {
+        font-size: medium;
+    }
+
+    ion-input {
+        background-color: white;
+        color: black;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .list-md {
+        background: transparent;
+    }
+
+    .list-md-lines-none .item {
+        border-radius: 10px;
+    }
+}
