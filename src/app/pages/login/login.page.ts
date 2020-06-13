@@ -29,6 +29,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter() {
+    console.log(`enter`)
+    this.sessionVerify();
+  }
+
+  private sessionVerify() {
+    this.fbAuth.authState.subscribe((retorno) => {
+      if (retorno) {
+        this.navCtrl.navigateRoot('home');
+      }
+    })
+  }
+
   async submit() {
     const loading = await this.loadingCtrl.create({ message: 'Autenticando...' });
     loading.present();

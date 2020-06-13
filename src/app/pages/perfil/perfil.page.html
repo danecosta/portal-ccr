@@ -40,59 +40,64 @@
   <ion-list lines="none">
     <form [formGroup]="form">
 
+      <ion-label>CPF</ion-label>
+      <ion-item>
+        <ion-input type="text" name="cpf" formControlName="cpf" placeholder="Informe o CPF" [brmasker]="{person: true}">
+        </ion-input>
+      </ion-item>
+
       <ion-label>Nome</ion-label>
       <ion-item>
-        <ion-input type="text" placeholder="Informe a nome" name="nome" formControlName="nome"></ion-input>
+        <ion-input type="text" placeholder="Informe o nome" name="nome" formControlName="nome"></ion-input>
       </ion-item>
 
       <ion-label>E-mail</ion-label>
       <ion-item>
-        <ion-input type="text" name="email" formControlName="email"></ion-input>
+        <ion-input type="text" name="email" placeholder="Informe o e-mail" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-label>Celular / Whatsapp</ion-label>
       <ion-item>
-        <ion-input type="text" name="whatsapp" formControlName="whatsapp" [brmasker]="{phone: true}"
-          [brmasker]="{mask:'(00) 0000-0000', len:14}"></ion-input>
+        <ion-input type="text" name="whatsapp" placeholder="Informe o whatsapp" formControlName="whatsapp"
+          [brmasker]="{phone: true}" [brmasker]="{mask:'(00) 0000-0000', len:14}"></ion-input>
       </ion-item>
 
       <!-- Endereço -->
       <ion-label for="cep">CEP</ion-label>
       <ion-item>
-        <ion-input type="text" name="cep" formControlName="cep" name="cep" [brmasker]="{mask:'00.000-000', len:10}">
+        <ion-input type="text" name="cep" formControlName="cep" name="cep" [brmasker]="{mask:'00.000-000', len:10}"
+          (focusout)="pesquisarCep()">
         </ion-input>
       </ion-item>
 
       <ion-label for="logradouro">Logradouro</ion-label>
       <ion-item>
-        <ion-textarea name="logradouro" formControlName="logradouro" name="logradouro" required
-          label-md-text-color="primary" rows="2">
-        </ion-textarea>
+        <ion-input type="text" name="logradouro" placeholder="Informe o logradouro" formControlName="logradouro"
+          name="cep"></ion-input>
       </ion-item>
 
-      <ion-label for="numero">Nº</ion-label>
+      <ion-label for="numero">Nº / Complemento</ion-label>
       <ion-item>
-        <ion-input type="number" name="numero" formControlName="numero" name="numero"></ion-input>
-      </ion-item>
-
-      <ion-label for="complemento">Complemento</ion-label>
-      <ion-item>
-        <ion-input type="text" name="complemento" formControlName="complemento" name="complemento"></ion-input>
+        <ion-input type="text" name="complemento" placeholder="Informe o Nº/Complemento" formControlName="complemento"
+          name="complemento"></ion-input>
       </ion-item>
 
       <ion-label for="bairro">Bairro</ion-label>
       <ion-item>
-        <ion-input type="text" name="bairro" formControlName="bairro" name="bairro"></ion-input>
+        <ion-input type="text" name="bairro" placeholder="Informe o bairro" formControlName="bairro" name="bairro">
+        </ion-input>
       </ion-item>
 
       <ion-label for="cidade">Cidade</ion-label>
       <ion-item>
-        <ion-input type="text" name="cidade" formControlName="cidade" name="cidade"></ion-input>
+        <ion-input type="text" name="cidade" placeholder="Informe a cidade" formControlName="cidade" name="cidade">
+        </ion-input>
       </ion-item>
 
       <ion-label for="estado">Estado</ion-label>
       <ion-item>
-        <ion-input type="text" name="estado" formControlName="estado" name="estado"></ion-input>
+        <ion-input type="text" name="estado" placeholder="Informe o estado" formControlName="estado" name="estado">
+        </ion-input>
       </ion-item>
     </form>
   </ion-list>

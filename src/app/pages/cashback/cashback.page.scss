@@ -12,13 +12,15 @@ ion-content {
         font-size: medium;
     }
 
-    pont-positiva {
-        color: #3cb371;
+    .font-7 {
         font-size: 7em;
     }
 
-    pont-negativa {
+    .pont-positiva {
+        color: #3cb371;
+    }
+
+    .pont-negativa {
         color: red;
-        font-size: 7em;
     }
 }

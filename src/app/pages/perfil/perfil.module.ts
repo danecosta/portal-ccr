@@ -19,6 +19,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth/';
     PerfilPageRoutingModule,
     BrMaskerModule
   ],
-  declarations: [PerfilPage]
+  declarations: [PerfilPage],
 })
 export class PerfilPageModule { }

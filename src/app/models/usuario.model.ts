@@ -1,11 +1,11 @@
 export class Usuario {
+    cpf: string;
     nome: string;
     email: string;
     foto: string;
     whatsapp: string;
     cep: string;
     logradouro: string;
-    numero: string;
     complemento: string;
     bairro: string;
     cidade: string;

@@ -21,7 +21,8 @@
   <ion-card>
     <ion-card-content style="text-align: center;">
       <div class="row">
-        <ion-icon slot="icon-only" name="cash-outline" [ngClass]="pontuacaoAtual > 0 ? 'pont-positiva':'pont-negativa'">
+        <ion-icon slot="icon-only" name="cash-outline"
+          [ngClass]="pontuacaoAtual > 0?'pont-positiva font-7':'pont-negativa font-7'">
         </ion-icon>
       </div>
       <div class="row">
@@ -29,14 +30,9 @@
       </div>
 
       <ion-list>
-        <ion-item>
-          <ion-label><b style="color: red;">-40</b>: Banho</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label><b style="color: green;">+100</b>: Corte de cabelo feito no posto CCR!</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label><b style="color: green;">+50</b>: Cadastro efetuado com sucesso!</ion-label>
+        <ion-item *ngFor="let item of leituras">
+          <ion-label><b [ngClass]="item.valor > 0 ?'pont-positiva':'pont-negativa'">{{item.valor}}</b>:
+            {{item.descricao}}</ion-label>
         </ion-item>
       </ion-list>
 
