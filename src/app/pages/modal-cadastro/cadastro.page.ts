@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss'],
 })
-export class CadastroPage {
+export class CadastroPage implements OnInit {
 
   form: FormGroup;
   @Input() email: string;
@@ -19,6 +19,10 @@ export class CadastroPage {
     private fbAuth: AngularFireAuth,
     private navCtrl: NavController,
     private loadingCtrl: LoadingController) { }
+
+
+  ngOnInit(): void {
+  }
 
   async cadastrarUsuario() {
     const loading = await this.loadingCtrl.create({ message: 'Autenticando...' });

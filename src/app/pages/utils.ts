@@ -53,6 +53,29 @@ export class Utils {
         await alert.present();
     }
 
+    async exibirMensagemConfirmacao(titulo: string, subTitulo: string) {
+        const alert = await this.alertCtrl.create({
+            cssClass: 'my-custom-class',
+            header: 'titulo',
+            message: 'subTitulo',
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    handler: (blah) => {
+                        console.log('Confirm Cancel: blah');
+                    }
+                }, {
+                    text: 'Salvar',
+                    handler: () => {
+                        console.log('Confirm Okay');
+                    }
+                }
+            ]
+        });
+
+        await alert.present();
+    }
+
     public existeObjetoJson(text: string): boolean {
         return text.indexOf('{') >= 0 && text.indexOf('}') >= 0;
     }

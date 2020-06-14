@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth/';
 import { Usuario } from 'src/app/models/usuario.model';
 import * as cep from 'cep-promise';
 import { Utils } from '../utils';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -42,9 +43,9 @@ export class PerfilPage extends Utils implements OnInit {
   ngOnInit() {
   }
 
-  abrirGaleria() { }
-
-  abrirCamera() { }
+  abrirModalEditarAvatar() {
+    this.navCtrl.navigateForward('avatar');
+  }
 
   atualizarUsuario() { }
 

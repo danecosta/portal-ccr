@@ -1,27 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoadingController, NavController, ToastController, ModalController } from '@ionic/angular';
+import { LoadingController, NavController, ToastController, ModalController, AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth/';
 import { auth } from 'firebase';
 import { Usuario } from 'src/app/models/usuario.model';
 import { NavigationExtras } from '@angular/router';
-import { CadastroPage } from '../cadastro/cadastro.page';
+import { CadastroPage } from '../modal-cadastro/cadastro.page';
+import { Utils } from '../utils';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage extends Utils implements OnInit {
 
   public form: FormGroup;
 
   constructor(private fb: FormBuilder,
-    private loadingCtrl: LoadingController,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,
     private navCtrl: NavController,
     private toastCtrl: ToastController,
     private fbAuth: AngularFireAuth,
     public modalCtrl: ModalController) {
+    super(loadingCtrl, alertCtrl);
 
     this.form = this.fb.group({
       email: ['', Validators.required],
