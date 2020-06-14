@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-avatar',
@@ -23,9 +25,14 @@ export class AvatarPage implements OnInit {
     targetHeight: 1000,
   };
 
-  constructor(private camera: Camera) { }
+  constructor(private camera: Camera,
+    private route: ActivatedRoute,
+    public navCtrl: NavController) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.usuario.email = params['usuario_email'];
+    });
   }
 
   abrirCamera() {
@@ -36,8 +43,9 @@ export class AvatarPage implements OnInit {
       targetWidth: 1000,
       targetHeight: 1000
     }).then((imageData) => {
-      this.base64Image = `data:image/png;base64,${imageData}`;
+      this.base64Image = `data:image/jpg;base64,${imageData}`;
       this.usuario.foto = this.base64Image;
+      this.retornarParaPerfil();
     }, (err) => {
       console.log(err);
     });
@@ -46,11 +54,21 @@ export class AvatarPage implements OnInit {
   abrirGaleria() {
     this.camera.getPicture(this.options)
       .then((imageData) => {
-        this.base64Image = `data:image/png;base64,${imageData}`;
+        this.base64Image = `data:image/jpg;base64,${imageData}`;
         this.usuario.foto = this.base64Image;
+        this.retornarParaPerfil();
       }, (err) => {
         console.log(err);
       });
+  }
+
+  retornarParaPerfil() {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        usuario_foto: this.usuario.foto
+      }
+    };
+    this.navCtrl.navigateForward('perfil', navigationExtras);
   }
 
 }

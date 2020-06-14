@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, AlertController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario.model';
 import { Utils } from '../utils';
+import { AngularFirestore } from '@angular/fire/firestore/';
+import { AngularFireAuth } from '@angular/fire/auth/';
 
 @Component({
   selector: 'app-prontuario',
@@ -14,13 +16,48 @@ export class ProntuarioPage extends Utils implements OnInit {
   consultas: any[];
 
   constructor(public loadingCtrl: LoadingController,
+    public angularFirestore: AngularFirestore,
     public alertCtrl: AlertController,
-    public navCtrl: NavController) {
+    public navCtrl: NavController,
+    private fbAuth: AngularFireAuth) {
     super(loadingCtrl, alertCtrl, navCtrl);
   }
 
   ngOnInit() {
     this.buscarConsultas();
+  }
+
+  ionViewWillEnter() {
+    this.sessionVerify();
+  }
+
+  async sessionVerify() {
+    this.fbAuth.authState.subscribe((retorno) => {
+      if (retorno) {
+        this.usuario.email = retorno.email;
+        this.obterDadosUsuarioLogado();
+      }
+    });
+  }
+
+  obterDadosUsuarioLogado() {
+    const perfil = this.angularFirestore.collection('profile');
+    perfil.ref.where(`email`, '==', this.usuario.email).get().then(x => {
+      x.forEach(doc => {
+        this.usuario.id = doc.id;
+        this.usuario.nome = doc.data().nome;
+        this.usuario.cpf = doc.data().cpf;
+        this.usuario.cep = doc.data().cep;
+        this.usuario.cidade = doc.data().cidade;
+        this.usuario.foto = doc.data().foto;
+        this.usuario.dataNascimento = doc.data().dataNascimento;
+        this.usuario.complemento = doc.data().complemento;
+        this.usuario.estado = doc.data().estado;
+        this.usuario.logradouro = doc.data().logradouro;
+        this.usuario.whatsapp = doc.data().whatsapp;
+        this.usuario.bairro = doc.data().bairro;
+      });
+    }).then();
   }
 
   buscarConsultas() {

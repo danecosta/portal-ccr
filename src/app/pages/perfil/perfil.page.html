@@ -29,7 +29,7 @@
         <ion-col col-6>
           <ion-avatar>
             <ion-img *ngIf="!usuario.foto" src="assets/imgs/avatar.png"></ion-img>
-            <ion-img *ngIf="usuario.foto" [src]="base64Image"></ion-img>
+            <ion-img *ngIf="usuario.foto" [src]="usuario.foto"></ion-img>
           </ion-avatar>
         </ion-col>
         <ion-col col-6 text-right>
@@ -56,9 +56,16 @@
         <ion-input type="text" placeholder="Informe o nome" name="nome" formControlName="nome"></ion-input>
       </ion-item>
 
+      <ion-label>Data de Nasc.</ion-label>
+      <ion-item>
+        <ion-input type="text" name="dataNascimento" formControlName="dataNascimento"
+          placeholder="Informe a data de nascimento" [brmasker]="{mask: '00/00/0000', type:'num'}">
+        </ion-input>
+      </ion-item>
+
       <ion-label>E-mail</ion-label>
       <ion-item>
-        <ion-input type="text" name="email" placeholder="Informe o e-mail" formControlName="email"></ion-input>
+        <ion-input type="text" name="email" formControlName="email" disabled="true"></ion-input>
       </ion-item>
 
       <ion-label>Celular / Whatsapp</ion-label>

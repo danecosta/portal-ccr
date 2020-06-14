@@ -1,4 +1,5 @@
 export class Usuario {
+    id: string;
     cpf: string;
     dataNascimento: string;
     nome: string;

@@ -38,7 +38,6 @@ export class CadastroPage implements OnInit {
         });
       })
       .catch((err) => {
-        console.log(err);
         loading.dismiss();
       });
   }
