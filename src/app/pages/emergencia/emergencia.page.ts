@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Utils } from '../utils';
 import { LoadingController, AlertController, NavController } from '@ionic/angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-emergencia',
@@ -13,7 +14,8 @@ export class EmergenciaPage extends Utils implements OnInit {
 
   constructor(public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public navCtrl: NavController) {
+    public navCtrl: NavController,
+    private callNumber: CallNumber) {
     super(loadingCtrl, alertCtrl, navCtrl);
   }
 
@@ -37,5 +39,11 @@ export class EmergenciaPage extends Utils implements OnInit {
       { descricao: 'VIA OESTE', icone: 'call-outline', numero: '08007015555', habilitado: true },
       { descricao: 'VIA SUL', icone: 'call-outline', numero: '08000000290', habilitado: true },
     ];
+  }
+
+  ligarPara(numero) {
+    this.callNumber.callNumber(numero, true)
+      .then(res => { })
+      .catch(err => { });
   }
 }

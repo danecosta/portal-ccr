@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EmergenciaPageRoutingModule } from './emergencia-routing.module';
 
 import { EmergenciaPage } from './emergencia.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { EmergenciaPage } from './emergencia.page';
     IonicModule,
     EmergenciaPageRoutingModule
   ],
-  declarations: [EmergenciaPage]
+  declarations: [EmergenciaPage],
+  providers: [
+    CallNumber,
+  ]
 })
-export class EmergenciaPageModule {}
+export class EmergenciaPageModule { }
