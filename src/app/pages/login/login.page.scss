@@ -10,6 +10,8 @@ ion-content {
     ion-label {
         font-size: large;
         margin: 0 auto;
+        word-break: break-word;
+        white-space: break-spaces;
     }
 
     ion-icon {

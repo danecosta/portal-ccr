@@ -9,6 +9,8 @@ import { LoadingController, AlertController, NavController } from '@ionic/angula
 })
 export class RotasPage extends Utils implements OnInit {
 
+  itens: any[];
+
   constructor(public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public navCtrl: NavController) {
@@ -16,5 +18,11 @@ export class RotasPage extends Utils implements OnInit {
   }
 
   ngOnInit() {
+    this.itens = [
+      { descricao: 'Rotas Personalizadas', icone: 'map-outline', destino: '', habilitado: false },
+      { descricao: 'Cálculo de Frete', icone: 'calculator-outline', destino: '', habilitado: false },
+      { descricao: 'Contato Chapas', icone: 'call-outline', destino: '', habilitado: false },
+      { descricao: 'Postos Polícia Rodoviária', icone: 'shield-checkmark-outline', destino: '', habilitado: false },
+    ];
   }
 }

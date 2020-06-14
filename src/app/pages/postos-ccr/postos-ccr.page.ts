@@ -9,6 +9,8 @@ import { LoadingController, AlertController, NavController } from '@ionic/angula
 })
 export class PostosCcrPage extends Utils implements OnInit {
 
+  itens: any[];
+
   constructor(public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public navCtrl: NavController) {
@@ -16,5 +18,9 @@ export class PostosCcrPage extends Utils implements OnInit {
   }
 
   ngOnInit() {
+    this.itens = [
+      { descricao: 'SOS CCR', icone: 'headset-outline', destino: '', habilitado: false },
+      { descricao: 'Pedágios', icone: 'card-outline', destino: '', habilitado: false },
+    ];
   }
 }

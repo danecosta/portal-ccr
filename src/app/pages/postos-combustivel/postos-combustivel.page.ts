@@ -9,6 +9,8 @@ import { LoadingController, AlertController, NavController } from '@ionic/angula
 })
 export class PostosCombustivelPage extends Utils implements OnInit {
 
+  itens: any[];
+
   constructor(public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public navCtrl: NavController) {
@@ -16,5 +18,11 @@ export class PostosCombustivelPage extends Utils implements OnInit {
   }
 
   ngOnInit() {
+    this.itens = [
+      { descricao: 'Ipiranga', logo: "assets/imgs/ipiranga.png", destino: '', habilitado: false },
+      { descricao: 'Petrobras BR', logo: "assets/imgs/petrobras.png", destino: '', habilitado: false },
+      { descricao: 'Agrisal', logo: "assets/imgs/agrisal.jpg", destino: '', habilitado: false },
+      { descricao: 'Outros', logo: "assets/imgs/postos.jpg", destino: '', habilitado: false },
+    ];
   }
 }

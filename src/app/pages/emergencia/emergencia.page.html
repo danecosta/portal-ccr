@@ -23,7 +23,16 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of itens" (click)="irPara(item.destino)" [disabled]="!item.habilitado">
+          <ion-icon [name]="item.icone" slot="start" color="success"></ion-icon>
+          <ion-label><b>{{item.descricao}}</b></ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 <ion-footer class="ion-no-border">
