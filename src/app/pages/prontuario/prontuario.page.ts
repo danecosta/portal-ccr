@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController, AlertController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario.model';
+import { Utils } from '../utils';
 
 @Component({
   selector: 'app-prontuario',
   templateUrl: './prontuario.page.html',
   styleUrls: ['./prontuario.page.scss'],
 })
-export class ProntuarioPage implements OnInit {
+export class ProntuarioPage extends Utils implements OnInit {
 
   usuario: Usuario = new Usuario();
   consultas: any[];
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,
+    public navCtrl: NavController) {
+    super(loadingCtrl, alertCtrl, navCtrl);
+  }
 
   ngOnInit() {
     this.buscarConsultas();
@@ -26,9 +31,5 @@ export class ProntuarioPage implements OnInit {
       { data: '15/03/2020', hora: '14:30', unidade: 'ViaRio', queixaPrincipal: 'Ansiedade' },
       { data: '13/03/2020', hora: '09:40', unidade: 'ViaRio', queixaPrincipal: 'Pressão alta' },
     ];
-  }
-
-  irPara(paginaDestino) {
-    this.navCtrl.navigateForward(paginaDestino);
   }
 }

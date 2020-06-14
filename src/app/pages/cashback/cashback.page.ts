@@ -25,7 +25,7 @@ export class CashbackPage extends Utils implements OnInit {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public navCtrl: NavController) {
-    super(loadingCtrl, alertCtrl);
+    super(loadingCtrl, alertCtrl, navCtrl);
   }
 
   ngOnInit() {
@@ -66,9 +66,4 @@ export class CashbackPage extends Utils implements OnInit {
     this.leituras.unshift(this.scannedCode);
     // Persistir nova leitura
   }
-
-  irPara(paginaDestino) {
-    this.navCtrl.navigateForward(paginaDestino);
-  }
-
 }

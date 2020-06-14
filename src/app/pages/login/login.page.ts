@@ -20,11 +20,11 @@ export class LoginPage extends Utils implements OnInit {
   constructor(private fb: FormBuilder,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    private navCtrl: NavController,
+    public navCtrl: NavController,
     private toastCtrl: ToastController,
     private fbAuth: AngularFireAuth,
     public modalCtrl: ModalController) {
-    super(loadingCtrl, alertCtrl);
+    super(loadingCtrl, alertCtrl, navCtrl);
 
     this.form = this.fb.group({
       email: ['', Validators.required],

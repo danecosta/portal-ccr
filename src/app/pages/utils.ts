@@ -1,6 +1,6 @@
 
 import { InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, NavController } from '@ionic/angular';
 
 export class Utils {
 
@@ -26,7 +26,8 @@ export class Utils {
     };
 
     constructor(public loadingCtrl: LoadingController,
-        public alertCtrl: AlertController) { }
+        public alertCtrl: AlertController,
+        public navCtrl: NavController) { }
 
     async iniciarLoader() {
         const loading = await this.loadingCtrl.create({
@@ -53,27 +54,8 @@ export class Utils {
         await alert.present();
     }
 
-    async exibirMensagemConfirmacao(titulo: string, subTitulo: string) {
-        const alert = await this.alertCtrl.create({
-            cssClass: 'my-custom-class',
-            header: 'titulo',
-            message: 'subTitulo',
-            buttons: [
-                {
-                    text: 'Cancelar',
-                    handler: (blah) => {
-                        console.log('Confirm Cancel: blah');
-                    }
-                }, {
-                    text: 'Salvar',
-                    handler: () => {
-                        console.log('Confirm Okay');
-                    }
-                }
-            ]
-        });
-
-        await alert.present();
+    public irPara(paginaDestino) {
+        this.navCtrl.navigateForward(paginaDestino);
     }
 
     public existeObjetoJson(text: string): boolean {

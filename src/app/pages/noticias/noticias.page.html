@@ -1,6 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>noticias</ion-title>
+<ion-header class="ion-no-border" translucent="true">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="irPara('perfil')" size="large">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="irPara('cashback')">
+        <ion-icon slot="icon-only" name="cash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="secondary">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="danger" style="margin-top: -15px;">
+    <ion-title size="large">NOTÍCIAS</ion-title>
   </ion-toolbar>
 </ion-header>
 

@@ -1,5 +1,8 @@
 <ion-header class="ion-no-border" translucent="true">
   <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar"></ion-back-button>
+    </ion-buttons>
     <ion-buttons slot="secondary">
       <ion-button (click)="irPara('perfil')" size="large">
         <ion-icon slot="icon-only" name="person-circle"></ion-icon>
@@ -13,7 +16,9 @@
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title size="large">Pontos</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="danger" style="margin-top: -15px;">
+    <ion-title size="large">PONTOS</ion-title>
   </ion-toolbar>
 </ion-header>
 

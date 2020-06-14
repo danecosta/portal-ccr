@@ -20,11 +20,11 @@ export class PerfilPage extends Utils implements OnInit {
 
   constructor(private fb: FormBuilder,
     public loadingCtrl: LoadingController,
-    private navCtrl: NavController,
+    public navCtrl: NavController,
     private toastCtrl: ToastController,
     private fbAuth: AngularFireAuth,
     public alertCtrl: AlertController) {
-    super(loadingCtrl, alertCtrl);
+    super(loadingCtrl, alertCtrl, navCtrl);
 
     this.form = this.fb.group({
       cpf: ['', Validators.required],
@@ -73,9 +73,4 @@ export class PerfilPage extends Utils implements OnInit {
   cancelar() {
     this.navCtrl.back();
   }
-
-  irPara(paginaDestino) {
-    this.navCtrl.navigateForward(paginaDestino);
-  }
-
 }
