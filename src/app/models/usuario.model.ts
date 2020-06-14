@@ -1,5 +1,6 @@
 export class Usuario {
     cpf: string;
+    dataNascimento: string;
     nome: string;
     email: string;
     foto: string;

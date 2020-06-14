@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { LoadingController, NavController, ToastController, ModalController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth/';
 import { auth } from 'firebase';
 import { Usuario } from 'src/app/models/usuario.model';
+import { NavigationExtras } from '@angular/router';
+import { CadastroPage } from '../cadastro/cadastro.page';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,8 @@ export class LoginPage implements OnInit {
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
     private toastCtrl: ToastController,
-    private fbAuth: AngularFireAuth) {
+    private fbAuth: AngularFireAuth,
+    public modalCtrl: ModalController) {
 
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -30,16 +33,20 @@ export class LoginPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    console.log(`enter`)
     this.sessionVerify();
   }
 
   private sessionVerify() {
     this.fbAuth.authState.subscribe((retorno) => {
       if (retorno) {
-        this.navCtrl.navigateRoot('home');
+        const navigationExtras: NavigationExtras = {
+          queryParams: {
+            usuario: retorno.email
+          }
+        };
+        this.navCtrl.navigateForward('bem-vindo', navigationExtras);
       }
-    })
+    });
   }
 
   async submit() {
@@ -53,21 +60,18 @@ export class LoginPage implements OnInit {
         this.navCtrl.navigateRoot('home');
       })
       .catch((err) => {
-        console.log(err);
         loading.dismiss();
-        this.showMessage('Usuário ou senha inválidos');
+        this.presentModal();
       });
   }
 
   async signInWithGoogle() {
     this.fbAuth.signInWithPopup(new auth.GoogleAuthProvider())
       .then((data) => {
-        console.log(data);
         localStorage.setItem('portalccr.user', JSON.stringify(new Usuario(data.user.displayName, data.user.email, data.user.photoURL)));
         this.navCtrl.navigateRoot('home');
       })
       .catch((err) => {
-        console.log(err);
         this.showMessage('Usuário ou senha inválidos');
       });
   }
@@ -75,14 +79,24 @@ export class LoginPage implements OnInit {
   async signInWithFacebook() {
     this.fbAuth.signInWithPopup(new auth.FacebookAuthProvider())
       .then((data) => {
-        console.log(data);
         localStorage.setItem('portalccr.user', JSON.stringify(new Usuario(data.user.displayName, data.user.email, data.user.photoURL)));
         this.navCtrl.navigateRoot('home');
       })
       .catch((err) => {
-        console.log(err);
         this.showMessage('Usuário ou senha inválidos');
       });
+  }
+
+  async presentModal() {
+    const modal = await this.modalCtrl.create({
+      component: CadastroPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        email: this.form.controls.email.value,
+        senha: this.form.controls.password.value,
+      }
+    });
+    return await modal.present();
   }
 
   async showMessage(message: string) {

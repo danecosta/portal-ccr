@@ -20,21 +20,21 @@
 <ion-content class="ion-padding">
   <ion-card>
     <ion-card-content>
-      <img *ngIf="usuario.foto" [src]="base64Image" width="200px" />
+      <ion-row>
+        <ion-col col-6>
+          <ion-avatar>
+            <ion-img *ngIf="!usuario.foto" src="assets/imgs/avatar.png"></ion-img>
+            <ion-img *ngIf="usuario.foto" [src]="base64Image"></ion-img>
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-6 text-right>
+          <ion-button ion-item color="medium" fill="outline" shape="round" expand="full" size="medium"
+            (click)="abrirGaleria()">
+            Editar
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ion-card-content>
-
-    <ion-row>
-      <ion-col col-6>
-        <ion-button ion-item color="primary" shape="clear" expand="full" size="medium" (click)="abrirGaleria()">
-          Galeria
-        </ion-button>
-      </ion-col>
-      <ion-col col-6 text-right>
-        <ion-button ion-item color="primary" shape="clear" expand="full" size="medium" (click)="abrirCamera()">
-          Câmera
-        </ion-button>
-      </ion-col>
-    </ion-row>
   </ion-card>
 
   <ion-list lines="none">
@@ -101,8 +101,6 @@
       </ion-item>
     </form>
   </ion-list>
-
-
 
   <ion-row>
     <ion-col col-6>

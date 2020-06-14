@@ -51,10 +51,23 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cashback/cashback.module').then(m => m.CashbackPageModule)
   },
   {
+    path: 'bem-vindo',
+    loadChildren: () => import('./pages/bem-vindo/bem-vindo.module').then(m => m.BemVindoPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroPageModule)
+  },
+  {
+    path: 'prontuario',
+    loadChildren: () => import('./pages/prontuario/prontuario.module').then(m => m.ProntuarioPageModule)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
   },
+
 ];
 
 @NgModule({

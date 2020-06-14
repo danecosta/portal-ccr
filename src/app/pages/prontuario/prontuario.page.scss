@@ -1,0 +1,30 @@
+ion-content {
+    --background: #e7e7e7;
+    --ion-text-color: #4e4c4c;
+
+    // ion-avatar {
+    //     margin: 1em;
+    //     width: 5em;
+    //     height: 5em;
+    // }
+
+    ion-card {
+        border-radius: 10px 10px 0 0;
+        margin-top: -15px;
+        border: 1px solid #337ab7;
+    }
+
+    .dataConsulta {
+        font-size: large;
+        color: #337ab7;
+    }
+
+    .horaConsulta {
+        font-size: large;
+        text-align: right;
+    }
+
+    .pt-25 {
+        padding-top: 25px;
+    }
+}

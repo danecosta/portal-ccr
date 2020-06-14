@@ -1,0 +1,52 @@
+<ion-header class="ion-no-border" translucent="true">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="secondary">
+      <ion-button (click)="irPara('perfil')" size="large">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="irPara('home')">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="secondary">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title size="large">Prontuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="true">
+  <div id="container">
+
+    <ion-item>
+      <ion-avatar>
+        <ion-img *ngIf="!usuario.foto" src="assets/imgs/avatar.png"></ion-img>
+        <ion-img *ngIf="usuario.foto" [src]="usuario.foto"></ion-img>
+      </ion-avatar>
+      <ion-label><b style="color:darkslategrey">{{usuario.nome}}</b>
+        <br>
+        {{usuario.dataNascimento}}
+        <br>
+        4 consultas
+      </ion-label>
+    </ion-item>
+
+    <div class="col-sm-12 col-md-4 pt-25">
+      <ion-card *ngFor="let consulta of consultas">
+        <ion-item>
+          <ion-label class="dataConsulta"><b>{{consulta.data}}</b></ion-label>
+          <ion-label class="horaConsulta"><b>{{consulta.hora}}</b></ion-label>
+        </ion-item>
+
+        <ion-card-content>
+          <ion-label><b>Unidade: {{consulta.unidade}} / Anamnese</b>
+            <br>
+            Queixa principal: {{consulta.queixaPrincipal}}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </div>
+</ion-content>
