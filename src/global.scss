@@ -31,3 +31,14 @@
 
     color: #fff;
 }
+
+ion-footer ion-toolbar {
+    margin: 0 auto;
+    text-align: center;
+    height: 20px;
+}
+
+ion-footer ion-toolbar ion-title {
+    margin-top: -26px;
+    font-size: x-small;
+}
