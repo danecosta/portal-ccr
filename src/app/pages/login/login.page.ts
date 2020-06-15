@@ -54,19 +54,24 @@ export class LoginPage extends Utils implements OnInit {
   }
 
   async submit() {
-    const loading = await this.loadingCtrl.create({ message: 'Autenticando...' });
-    loading.present();
+    if (this.form.valid) {
+      const loading = await this.loadingCtrl.create({ message: 'Autenticando...' });
+      loading.present();
 
-    this.fbAuth.signInWithEmailAndPassword(this.form.controls.email.value, this.form.controls.password.value)
-      .then((data) => {
-        loading.dismiss();
-        localStorage.setItem('portalccr.user', JSON.stringify(new Usuario('', data.user.email, '')));
-        this.navCtrl.navigateRoot('home');
-      })
-      .catch((err) => {
-        loading.dismiss();
-        this.presentModal();
-      });
+      this.fbAuth.signInWithEmailAndPassword(this.form.controls.email.value, this.form.controls.password.value)
+        .then((data) => {
+          loading.dismiss();
+          localStorage.setItem('portalccr.user', JSON.stringify(new Usuario('', data.user.email, '')));
+          this.navCtrl.navigateRoot('home');
+        })
+        .catch((err) => {
+          loading.dismiss();
+          this.presentModal();
+        });
+    } else {
+      this.exibirMensagem('Ops!', 'Informe e-mail e senha para entrar!')
+    }
+
   }
 
   async signInWithGoogle() {

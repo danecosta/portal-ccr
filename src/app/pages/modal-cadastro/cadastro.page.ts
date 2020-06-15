@@ -34,7 +34,7 @@ export class CadastroPage implements OnInit {
         localStorage.setItem('portalccr.user', JSON.stringify(new Usuario('', data.user.email, '')));
         this.navCtrl.navigateRoot('bem-vindo');
         this.modalController.dismiss({
-          'dismissed': true
+          dismissed: true
         });
       })
       .catch((err) => {
@@ -43,6 +43,9 @@ export class CadastroPage implements OnInit {
   }
 
   cancelar() {
+    this.modalController.dismiss({
+      dismissed: true
+    });
     this.navCtrl.navigateRoot('login');
   }
 
