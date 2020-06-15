@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoadingController, NavController, ToastController, AlertController } from '@ionic/angular';
+import { LoadingController, NavController, ToastController, AlertController, MenuController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth/';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Usuario } from 'src/app/models/usuario.model';
@@ -38,8 +38,9 @@ export class PerfilPage extends Utils implements OnInit {
     private route: ActivatedRoute,
     private toastCtrl: ToastController,
     private fbAuth: AngularFireAuth,
-    public alertCtrl: AlertController) {
-    super(loadingCtrl, alertCtrl, navCtrl);
+    public alertCtrl: AlertController,
+    public menuCtrl: MenuController) {
+    super(loadingCtrl, alertCtrl, navCtrl, menuCtrl);
 
     this.form = this.fb.group({
       cpf: ['', Validators.required],

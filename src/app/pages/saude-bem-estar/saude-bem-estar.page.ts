@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, AlertController } from '@ionic/angular';
+import { NavController, LoadingController, AlertController, MenuController } from '@ionic/angular';
 import { Utils } from '../utils';
 
 @Component({
@@ -13,8 +13,9 @@ export class SaudeBemEstarPage extends Utils implements OnInit {
 
   constructor(public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public navCtrl: NavController) {
-    super(loadingCtrl, alertCtrl, navCtrl);
+    public navCtrl: NavController,
+    public menuCtrl: MenuController) {
+    super(loadingCtrl, alertCtrl, navCtrl, menuCtrl);
   }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, AlertController } from '@ionic/angular';
+import { NavController, LoadingController, AlertController, MenuController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario.model';
 import { Utils } from '../utils';
 import { AngularFirestore } from '@angular/fire/firestore/';
@@ -19,8 +19,9 @@ export class ProntuarioPage extends Utils implements OnInit {
     public angularFirestore: AngularFirestore,
     public alertCtrl: AlertController,
     public navCtrl: NavController,
-    private fbAuth: AngularFireAuth) {
-    super(loadingCtrl, alertCtrl, navCtrl);
+    private fbAuth: AngularFireAuth,
+    public menuCtrl: MenuController) {
+    super(loadingCtrl, alertCtrl, navCtrl, menuCtrl);
   }
 
   ngOnInit() {

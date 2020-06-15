@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Utils } from '../utils';
-import { AlertController, LoadingController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController, ToastController, MenuController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario.model';
 import { AngularFireAuth } from '@angular/fire/auth/';
 import { AngularFirestore } from '@angular/fire/firestore/';
@@ -28,21 +28,21 @@ export class CashbackPage extends Utils implements OnInit {
 
   constructor(private barcodeScanner: BarcodeScanner,
     public loadingCtrl: LoadingController,
+    public toasterCtrl: ToastController,
     public alertCtrl: AlertController,
     public angularFirestore: AngularFirestore,
     private fbAuth: AngularFireAuth,
-    public navCtrl: NavController) {
-    super(loadingCtrl, alertCtrl, navCtrl);
+    public navCtrl: NavController,
+    public menuCtrl: MenuController) {
+    super(loadingCtrl, alertCtrl, navCtrl, menuCtrl);
   }
 
-  ngOnInit() {
-    // Obter leituras e pontuacao atual do caminhoneiro
-    this.leituras = [
-      { tipoCashback: 'a179aa0c-3802-4653-88f1-e8e7ce6c9037', descricao: 'Cadastro efetivado com sucesso!', valor: 50 },
-    ];
+  ngOnInit() { }
 
-    this.leituras.forEach(item => {
-      this.pontuacaoAtual += item.valor;
+  ionViewWillEnter() {
+    this.sessionVerify().then(() => {
+      this.obterLeiturasIniciais();
+      this.obterLeiturasUsuario();
     });
   }
 
@@ -53,6 +53,40 @@ export class CashbackPage extends Utils implements OnInit {
       }
     });
   }
+
+  private obterLeiturasIniciais() {
+    this.leituras = [];
+    this.leituras = [
+      { tipoCashback: 'a179aa0c-3802-4653-88f1-e8e7ce6c9037', descricao: 'Cadastro efetivado com sucesso!', valor: 50, data: new Date() },
+    ];
+
+    this.leituras.forEach(item => {
+      this.pontuacaoAtual += item.valor;
+    });
+  }
+
+  obterLeiturasUsuario() {
+    this.pontuacaoAtual = 0;
+    const profileRef = this.angularFirestore.collection('leitura');
+    profileRef.ref.where(`email`, '==', this.usuario.email).get().then(x => {
+      x.forEach(doc => {
+        this.leituras.push({
+          valor: doc.data().valor,
+          descricao: doc.data().descricao
+        });
+      });
+    }).then(() => {
+      this.calcularPontuacaoAtual();
+    });
+  }
+
+  calcularPontuacaoAtual() {
+    this.pontuacaoAtual = 0;
+    this.leituras.forEach(leitura => {
+      this.pontuacaoAtual += leitura.valor;
+    });
+  }
+
 
   lerQRCode() {
     this.barcodeScanner.scan().then(
@@ -83,8 +117,18 @@ export class CashbackPage extends Utils implements OnInit {
       this.pontuacaoAtual += this.novaLeitura.valor;
 
       const novaLeituraId = this.angularFirestore.createId();
-      this.angularFirestore.doc(`leitura/${novaLeituraId}`).set(Object.assign({}, this.novaLeitura)).then(() => {
+      const obj = {
+        email: this.usuario.email,
+        descricao: this.novaLeitura.descricao,
+        tipoCashback: this.novaLeitura.tipoCashback,
+        valor: this.novaLeitura.valor,
+        data_leitura: new Date()
+      };
+
+      this.angularFirestore.doc(`leitura/${novaLeituraId}`).set(Object.assign({}, obj)).then(() => {
         this.exibirMensagem('Sucesso!', 'Leitura registrada com sucesso');
+      }).catch((err) => {
+        console.log(err);
       });
     } else {
       this.exibirMensagem('Ops!', 'Você não possui saldo suficiente para essa ação.');

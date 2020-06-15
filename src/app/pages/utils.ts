@@ -1,6 +1,7 @@
 
 import { InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
-import { LoadingController, AlertController, NavController } from '@ionic/angular';
+import { LoadingController, AlertController, NavController, MenuController } from '@ionic/angular';
+import { ThrowStmt } from '@angular/compiler';
 
 export class Utils {
 
@@ -25,9 +26,12 @@ export class Utils {
         fullscreen: 'yes', // Windows only
     };
 
+    private menuAberto = false;
+
     constructor(public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
-        public navCtrl: NavController) { }
+        public navCtrl: NavController,
+        public menuCtrl: MenuController) { }
 
     async iniciarLoader() {
         const loading = await this.loadingCtrl.create({
@@ -56,6 +60,26 @@ export class Utils {
 
     public irPara(paginaDestino) {
         this.navCtrl.navigateForward(paginaDestino);
+    }
+
+    public moverMenu() {
+        if (!this.menuAberto) {
+            this.abrirMenu();
+        } else {
+            this.fecharMenu();
+        }
+
+        this.menuAberto = !this.menuAberto;
+    }
+
+    public abrirMenu() {
+        this.menuCtrl.open('end');
+        this.menuAberto = true;
+    }
+
+    public fecharMenu() {
+        this.menuCtrl.close('end');
+        this.menuAberto = false;
     }
 
     public existeObjetoJson(text: string): boolean {

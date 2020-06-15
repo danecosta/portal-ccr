@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoadingController, NavController, ToastController, ModalController, AlertController } from '@ionic/angular';
+import { LoadingController, NavController, ToastController, ModalController, AlertController, MenuController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth/';
 import { auth } from 'firebase';
 import { Usuario } from 'src/app/models/usuario.model';
@@ -23,8 +23,9 @@ export class LoginPage extends Utils implements OnInit {
     public navCtrl: NavController,
     private toastCtrl: ToastController,
     private fbAuth: AngularFireAuth,
-    public modalCtrl: ModalController) {
-    super(loadingCtrl, alertCtrl, navCtrl);
+    public modalCtrl: ModalController,
+    public menuCtrl: MenuController) {
+    super(loadingCtrl, alertCtrl, navCtrl, menuCtrl);
 
     this.form = this.fb.group({
       email: ['', Validators.required],

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Utils } from '../utils';
-import { LoadingController, AlertController, NavController } from '@ionic/angular';
+import { LoadingController, AlertController, NavController, MenuController } from '@ionic/angular';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
@@ -15,8 +15,9 @@ export class EmergenciaPage extends Utils implements OnInit {
   constructor(public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public navCtrl: NavController,
-    private callNumber: CallNumber) {
-    super(loadingCtrl, alertCtrl, navCtrl);
+    private callNumber: CallNumber,
+    public menuCtrl: MenuController) {
+    super(loadingCtrl, alertCtrl, navCtrl, menuCtrl);
   }
 
   ngOnInit() {
