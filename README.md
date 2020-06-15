@@ -51,6 +51,12 @@ ionic s
 ionic cordova run android
 ```
 
+**Autenticando no aplicativo**
+
+Ao informar e-mail e senha, será verificado se já existe usuário vinculado ao e-mail informado. Caso não tenha, será criado.
+
+A autenticação com Google e Facebook não está finalizada.
+
 ## :memo: &nbsp; Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
